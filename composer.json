@@ -1,12 +1,12 @@
 {
-    "name": "gemorroj/m3u-parser",
-    "description": "m3u playlist parser",
+    "name": "XpamAmAdEuS/MitM3uParser",
+    "description": "Barix m3u playlist parser",
     "keywords": ["m3u", "playlist"],
     "type": "library",
     "license": "GPLv3",
     "authors": [
         {
-            "name": "Gemorroj"
+            "name": "XpamAmAdEuS"
         }
     ],
     "require": {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "M3uParser\\": "src/M3uParser"
+            "MitM3uParser\\": "src/MitM3uParser"
         }
     }
 }
