@@ -1,5 +1,12 @@
 {
-    "name": "XpamAmAdEuS/MitM3uParser",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/XpamAmAdEuS/MitM3uParser"
+        }
+    ],
+
+    "name": "xpamamadeus/mitm3uparser",
     "description": "Barix m3u playlist parser",
     "keywords": ["m3u", "playlist"],
     "type": "library",
@@ -20,4 +27,5 @@
             "MitM3uParser\\": "src/MitM3uParser"
         }
     }
+
 }
