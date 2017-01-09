@@ -60,6 +60,15 @@ class MitM3uParser
             $title = substr($lineStr, 17, strrpos($lineStr, '.') -17);
             $entry->setName($title);
             $entry->setTime($timeStr);
+            $day = substr($lineStr, 11, 2);
+            $entry->setDay($day);
+            $starttime = substr($lineStr, 14, 8);
+            $entry->setStarttime($starttime);
+            $endtime = substr($lineStr, 23, 8);
+            $entry->setEndtime($endtime);
+            $volume = substr($lineStr, 34, strrpos($lineStr, ',') -36);
+            $entry->setVolume($volume);
+
         }
         return $entry;
     }

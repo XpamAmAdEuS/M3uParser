@@ -22,9 +22,73 @@ class Entry
      */
     private $time;
     /**
-     * @param string $name
-     * @return Entry
+     * @var string
      */
+
+    private $day;
+    /**
+     * @var string
+     */
+
+    private $starttime;
+    /**
+     * @var string
+     */
+
+    private $endtime;
+    /**
+     * @var string
+     */
+
+    private $volume;
+
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+    /**
+     * Tile file
+     *
+     * @return string|null
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    public function setStarttime($starttime)
+    {
+        $this->starttime = $starttime;
+
+        return $this;
+    }
+    /**
+     * Tile file
+     *
+     * @return string|null
+     */
+    public function getStarttime()
+    {
+        return $this->starttime;
+    }
+
+    public function setEndtime($endtime)
+    {
+        $this->endtime = $endtime;
+
+        return $this;
+    }
+    /**
+     * Tile file
+     *
+     * @return string|null
+     */
+    public function getEndtime()
+    {
+        return $this->endtime;
+    }
 
     public function setName($name)
     {
@@ -33,7 +97,7 @@ class Entry
         return $this;
     }
     /**
-     * Tile file
+     *  File name
      *
      * @return string|null
      */
@@ -63,10 +127,26 @@ class Entry
         return $this->time;
     }
 
-    public function setDay($day)
+    /**
+     * @param string $volume
+     * @return Entry
+     */
+    public function setVolume($volume)
     {
-        $this->day = $day;
+        $this->volume = $volume;
 
         return $this;
     }
+
+    /**
+     * File volume
+     *
+     * @return string
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+
 }
