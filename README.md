@@ -13,7 +13,7 @@
 ```json
 {
     "require": {
-        "XpamAmAdEuS/MitM3uParser": "master"
+        "XpamAmAdEuS/MitM3uParser": "dev-master"
     }
 }
 ```

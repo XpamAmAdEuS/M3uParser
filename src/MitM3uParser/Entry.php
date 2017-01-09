@@ -11,6 +11,7 @@
  */
 
 namespace MitM3uParser;
+
 class Entry
 {
     /**
@@ -147,6 +148,5 @@ class Entry
     {
         return $this->volume;
     }
-
 
 }
