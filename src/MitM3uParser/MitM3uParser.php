@@ -14,6 +14,11 @@ namespace MitM3uParser;
 
 class MitM3uParser
 {
+    /**
+     * @param $file
+     * @return array
+     * @throws Exception
+     */
     public function parseDatafromFile($file)
     {
         $str = @file_get_contents($file);
@@ -24,6 +29,11 @@ class MitM3uParser
         return $this->parseData($str);
     }
 
+    /**
+     * @param $file
+     * @return array
+     * @throws Exception
+     */
     public function parseHeaderfromFile($file)
     {
         $str = @file_get_contents($file);
@@ -34,6 +44,10 @@ class MitM3uParser
         return $this->parseHeader($str);
     }
 
+    /**
+     * @param $str
+     * @return array
+     */
     public function parseData($str)
     {
         $data = array();
@@ -52,6 +66,10 @@ class MitM3uParser
         return $data;
     }
 
+    /**
+     * @param $str
+     * @return array
+     */
     public function parseHeader($str)
     {
         $data = array();
@@ -59,7 +77,7 @@ class MitM3uParser
 
         while (list(, $line) = each($lines)) {
 
-            $entry = $this->parseHeaderLine($line, $lines);
+            $entry = $this->parseHeaderLine($line);
             if (null === $entry) {
                 continue;
             }
@@ -70,6 +88,11 @@ class MitM3uParser
         return $data;
     }
 
+    /**
+     * @param $lineStr
+     * @param array $linesStr
+     * @return Entry|null
+     */
     protected function parseDataLine($lineStr, array $linesStr)
     {
         $entry = new Entry();
@@ -88,17 +111,19 @@ class MitM3uParser
             $title = substr($lineStr, 17, strrpos($lineStr, '.') -17);
             $entry->setName($title);
             $entry->setTime($timeStr);
-
-
-
         }
         return $entry;
     }
 
-    protected function parseHeaderLine($lineStr, array $linesStr)
+    /**
+     * @param $lineStr
+     * @return Entry|null
+     */
+    protected function parseHeaderLine($lineStr)
     {
         $entry = new Entry();
         $lineStr = trim($lineStr);
+
         if (strtoupper(substr($lineStr, 0, 11)) === '#BARIX-4,,,') {
             $day = substr($lineStr, 11, 2);
             $entry->setDay($day);
@@ -109,20 +134,11 @@ class MitM3uParser
             $volume = substr($lineStr, 34, strrpos($lineStr, ',') -36);
             $entry->setVolume($volume);
         }
-        if (strtoupper(substr($lineStr, 0, 4)) > '#./{') {
-            return null;
-        }
+
         if (strtoupper(substr($lineStr, 0, 4)) === '') {
             return null;
         }
-        if (strtoupper(substr($lineStr, 0, 4)) === '#./{') {
-            return null;
 
-
-
-        }
         return $entry;
     }
-
-
 }
