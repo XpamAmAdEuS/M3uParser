@@ -36,7 +36,7 @@ class MitM3uParser
      */
     public function parseHeaderfromFile($file)
     {
-        $str = @file_get_contents($file);
+        $str = @fgets(fopen($file, 'r'));
         if (false === $str) {
             throw new Exception('Can\'t read file.');
         }
@@ -66,25 +66,20 @@ class MitM3uParser
         return $data;
     }
 
+
     /**
      * @param $str
      * @return array
+     * @throws Exception
      */
     public function parseHeader($str)
     {
         $data = array();
-        $lines = explode("\n", $str);
-
-        while (list(, $line) = each($lines)) {
-
-            $entry = $this->parseHeaderLine($line);
-            if (null === $entry) {
-                continue;
-            }
-
-            $data[] = $entry;
+        $entry = $this->parseHeaderLine($str);
+        if (null === $entry) {
+            throw new Exception('Not Barix Playlist!!');
         }
-
+        $data[] = $entry;
         return $data;
     }
 
